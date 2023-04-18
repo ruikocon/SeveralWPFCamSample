@@ -5,7 +5,9 @@ VisualStudioVersion = 17.5.33516.290
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleMediaCapture", "SampleMediaCapture\SampleMediaCapture.csproj", "{4A1BCF9C-4F24-4014-A1E1-7472A3E2390D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleOpenCVSharp", "SampleOpenCVSharp\SampleOpenCVSharp.csproj", "{064EB078-7F93-4206-B1E8-A82A51F9BAB0}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "SampleOpenCVSharp", "SampleOpenCVSharp\SampleOpenCVSharp.csproj", "{064EB078-7F93-4206-B1E8-A82A51F9BAB0}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "SampleAForge", "SampleAForge\SampleAForge.csproj", "{B3E4F1BE-5167-4EB2-8E52-D482E9FB4F2A}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -31,6 +33,14 @@ Global
 		{064EB078-7F93-4206-B1E8-A82A51F9BAB0}.Release|Any CPU.Build.0 = Release|Any CPU
 		{064EB078-7F93-4206-B1E8-A82A51F9BAB0}.Release|x86.ActiveCfg = Release|Any CPU
 		{064EB078-7F93-4206-B1E8-A82A51F9BAB0}.Release|x86.Build.0 = Release|Any CPU
+		{B3E4F1BE-5167-4EB2-8E52-D482E9FB4F2A}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{B3E4F1BE-5167-4EB2-8E52-D482E9FB4F2A}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{B3E4F1BE-5167-4EB2-8E52-D482E9FB4F2A}.Debug|x86.ActiveCfg = Debug|Any CPU
+		{B3E4F1BE-5167-4EB2-8E52-D482E9FB4F2A}.Debug|x86.Build.0 = Debug|Any CPU
+		{B3E4F1BE-5167-4EB2-8E52-D482E9FB4F2A}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{B3E4F1BE-5167-4EB2-8E52-D482E9FB4F2A}.Release|Any CPU.Build.0 = Release|Any CPU
+		{B3E4F1BE-5167-4EB2-8E52-D482E9FB4F2A}.Release|x86.ActiveCfg = Release|Any CPU
+		{B3E4F1BE-5167-4EB2-8E52-D482E9FB4F2A}.Release|x86.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
