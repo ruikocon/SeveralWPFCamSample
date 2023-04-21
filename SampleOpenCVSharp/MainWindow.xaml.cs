@@ -23,11 +23,13 @@ namespace SampleOpenCVSharp
     public partial class MainWindow : System.Windows.Window
     {
         //项目说明：
-        //1  理论上适用于.Net 和 .NetFramework，但实测发现，.Net Framework下无法录像
-        //2  通过nuget安装OpenCVSharp4.Windows和OpenCVSharp4.WpfExtensions，后者用于图像转换
+        //1  开启摄像头之后在某些机器上可能会非常慢，要等一会，解决办法是new VideoCapture(0, VideoCaptureAPIs.DSHOW)加个DSHOW的参数，但这样又会造成录像失败，目前还没解决
+        //2  项目为.Net 6，代码理论上适用于.Net 和 .NetFramework，但实测发现，.Net Framework下无法录像
+        //3  通过nuget安装OpenCVSharp4.Windows和OpenCVSharp4.WpfExtensions，后者用于图像转换
+        //4  图片和视频输出到执行文件所在目录下的"_SampleOpenCVSharp"子目录之中
         //参考文档：
-        //OpenCVSharp官网wiki  https://github.com/shimat/opencvsharp/wiki
-        //opencvsharp官网   https://github.com/shimat/opencvsharp
+        //opencvsharp官网   https://github.com/shimat/opencvsharp   （Apache-2.0协议）
+        //OpenCVSharp官网wiki  https://github.com/shimat/opencvsharp/wiki  
         //opencv sharp 库使用手册    https://shimat.github.io/opencvsharp_docs/html/d69c29a1-7fb1-4f78-82e9-79be971c3d03.htm
 
 
@@ -207,9 +209,9 @@ namespace SampleOpenCVSharp
 
         private void btnPhoto_Click(object sender, RoutedEventArgs e)
         {
-            var encoder = new PngBitmapEncoder();
+            var encoder = new JpegBitmapEncoder();
             encoder.Frames.Add(BitmapFrame.Create((BitmapSource)imgPreview.Source));
-            string fileName = DateTime.Now.ToString("yyMMdd_HH_mm_ss_") + imgWidth.ToString() + "x" + imgHeight.ToString() + ".png";
+            string fileName = DateTime.Now.ToString("yyMMdd_HH_mm_ss_") + imgWidth.ToString() + "x" + imgHeight.ToString() + ".jpg";
             string outPath = System.Environment.CurrentDirectory + "\\_SampleOpenCVSharp";
             if (!Directory.Exists(outPath))
             {

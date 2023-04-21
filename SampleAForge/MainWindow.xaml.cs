@@ -28,13 +28,17 @@ namespace SampleAForge
     public partial class MainWindow : Window
     {
         // 项目说明：
-        // 1. 使用AForge库，适用于.Net Framework和.Net，但库比较老了,录像功能在.Net下无法使用, 而且存在一些问题，使用起来也比较麻烦
+        // 1. 项目为.Net Framework，使用AForge库，适用于.Net Framework和.Net，但库比较老了,录像功能在.Net下无法使用, 而且存在一些问题，使用起来也比较麻烦
         // 2. 首先在nuget下安装Aforge.controls,Aforge.video,Aforge.video.DirectShow
-        // 3. 通过nuget安装Accord.Video.FFMPEG  用于编码为视频文件，但因为使用了ffmpeg解码器，所以用了这个只能采用GPL协议 
+        // 3. 通过nuget安装Accord.Video.FFMPEG  用于编码为视频文件，但因为使用了ffmpeg解码器，所以Accord.Video.FFMPEG采用GPL协议，请注意协议的问题
         //    注意不要去找AForge.video.ffmpeg，已经很老了，很多坑，再说也找不到了
         // 4. 添加system.drawing的引用，如果是.Net6，需要在nuget之中安装 system.drawing.common
-        // 6. 添加对C:\Windows\Microsoft.NET\Framework64\v4.0.30319\WPF\WindowsFormsIntegration.dll 的引用，上面两个是为了在XAML之中使用WindowsFormsHost
-        // 7. 输出文件保存在_SampleAforge目录下
+        // 5. 添加对C:\Windows\Microsoft.NET\Framework64\v4.0.30319\WPF\WindowsFormsIntegration.dll 的引用
+        // 6. 上面两个是为了在XAML之中使用WindowsFormsHost
+        // 7. 输出文件保存在可执行文件所在目录的_SampleAforge目录下
+        // 参考文档
+        // AForge官网 https://github.com/andrewkirillov/AForge.NET  如今是Accord的一部分 使用ffmpeg的部分为GPL协议，其他代码为LGPL协议
+        // Accord官网 http://accord-framework.net/index.html  部分为GPL协议，其他代码为LGPL协议
 
 
         private int videoWidth;
@@ -232,13 +236,13 @@ namespace SampleAForge
             if (videoSource == null)
                 return;
             Bitmap bitmap = videoSourcePlayer.GetCurrentVideoFrame();
-            string fileName = DateTime.Now.ToString("yyMMdd_HH_mm_ss_") + videoWidth.ToString() + "x" + videoHeight.ToString() + ".bmp";
+            string fileName = DateTime.Now.ToString("yyMMdd_HH_mm_ss_") + videoWidth.ToString() + "x" + videoHeight.ToString() + ".jpg";
             string outPath = System.Environment.CurrentDirectory + "\\_SampleAforge";
             if (!Directory.Exists(outPath))
             {
                 Directory.CreateDirectory(outPath);
             }
-            bitmap.Save(outPath + "\\" + fileName, System.Drawing.Imaging.ImageFormat.Bmp);
+            bitmap.Save(outPath + "\\" + fileName, System.Drawing.Imaging.ImageFormat.Jpeg);
 
             //MessageBox.Show("图片已保存在'_SampleAforge'目录之中");
         }

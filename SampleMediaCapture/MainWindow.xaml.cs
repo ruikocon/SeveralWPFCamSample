@@ -31,13 +31,16 @@ namespace SampleMediaCapture
     public partial class MainWindow : Window
     {
         //项目说明：
-        //1. 只适用于.Net Framework，.Net5之后放弃了对WinRT的支持，无法使用MediaCapture类
-        //2. 添加MediaCaptureWPF 和 MediaCaptureWPF.Native 引用，dll放在dll子目录，或者去https://github.com/mmaitre314/MediaCaptureWPF
-        //3. 在 工具 -> Nuget包管理器 -> 程序包管理器设置 -> 常规 之中将默认包管理器模式改为 PackageReference
-        //4. 在Nuget之中添加 Microsoft.Toolkit.Wpf.UI.Controls 
-        //5. 项目属性之中 目标平台确保为x64
-        //6. 图片和视频输出到"我的图片\_SampleMediaCapture",因为MediaCapture类移植自UWP,故此只能对我的图片目录进行操作
+        //1. 项目为.Net Framework，代码只适用于.Net Framework，因为.Net5之后放弃了对WinRT的支持，无法使用MediaCapture类
+        //2. Visual Studio开发环境需安装"工作负荷-使用C++的桌面开发"，因为下面的MediaCaptureWPF.Native.dll使用了本地代码
+        //3. 添加MediaCaptureWPF 和 MediaCaptureWPF.Native 引用，dll放在dll子目录，或者去https://github.com/mmaitre314/MediaCaptureWPF
+        //4. 在 工具 -> Nuget包管理器 -> 程序包管理器设置 -> 常规 之中将默认包管理器模式改为 PackageReference
+        //5. 在Nuget之中添加 Microsoft.Toolkit.Wpf.UI.Controls 
+        //6. 项目属性之中 目标平台确保为x64
+        //7. 图片和视频输出到"我的图片\_SampleMediaCapture",因为MediaCapture类移植自UWP,故此只能对我的图片目录进行操作
+        //参考文档：
         //一些代码来自微软官方实例 https://github.com/microsoft/Windows-universal-samples/tree/main/Samples/CameraResolution
+        //MediaCaptureWPF  https://github.com/mmaitre314/MediaCaptureWPF   （Apache-2.0协议）
 
         public MediaCapture mCaptue;
         public CapturePreview cPreview;
