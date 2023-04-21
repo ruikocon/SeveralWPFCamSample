@@ -23,8 +23,8 @@ namespace SampleCaptura
     public partial class MainWindow : Window
     {
         //项目说明：
-        //1. 适用于.Net Framework和.Net，可以获取从摄像录像截图，但不能选择分辨率，获取摄像头图像和录像截图代码都抄自Captura，
-        //   获取摄像头部分使用DirectShowLib，编码输出视频部分使用ffmpeg
+        //1. 项目为.Net Framework，代码适用于.Net Framework和.Net，可以获取从摄像头录像截图，但不能选择分辨率，
+        //   获取摄像头图像和录像截图代码都抄自Captura，获取摄像头部分使用DirectShowLib，编码输出视频部分使用ffmpeg
         //2. ffmpeg需从官网下载GPL版的，将可执行文件和dll解压到指定目录，比如D:\ffmpeg，然后将FFmpegService.cs中的两处folderPath改为该目录
         //3. 从nuget之中添加DirectShowLib，添加对程序集System.Drawing的引用
         //4. 输出文件保存在可执行文件所在目录的_SampleCaptura目录下
@@ -65,6 +65,8 @@ namespace SampleCaptura
             btnPhoto.IsEnabled = false;
             btnRecord.IsEnabled = false;
 
+
+            //自己根据摄像头写分辨率
             VideoWidth = 1280;
             VideoHeight = 720;
         }
@@ -118,7 +120,7 @@ namespace SampleCaptura
                     Directory.CreateDirectory(outPath);
                 }               
 
-                _videoWriter = new FFmpegWriter();
+                _videoWriter = new FFmpegWriter(VideoWidth, VideoHeight);
 
                 _recorder = new Recorder(_videoWriter, _captureWebcam, 25);
                 _recorder.Start();
@@ -157,7 +159,7 @@ namespace SampleCaptura
 
         private void btnPhoto_Click(object sender, RoutedEventArgs e)
         {
-            string fileName = DateTime.Now.ToString("yyMMdd_HH_mm_ss_")  + ".jpg";
+            string fileName = DateTime.Now.ToString("yyMMdd_HH_mm_ss_") + VideoWidth.ToString() + "x" + VideoHeight.ToString() + ".jpg";
             string outPath = System.Environment.CurrentDirectory + "\\_SampleCaptura";
             if (!Directory.Exists(outPath))
             {

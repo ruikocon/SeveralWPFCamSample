@@ -33,9 +33,8 @@ namespace SampleAForge
         // 3. 通过nuget安装Accord.Video.FFMPEG  用于编码为视频文件，但因为使用了ffmpeg解码器，所以Accord.Video.FFMPEG采用GPL协议，请注意协议的问题
         //    注意不要去找AForge.video.ffmpeg，已经很老了，很多坑，再说也找不到了
         // 4. 添加system.drawing的引用，如果是.Net6，需要在nuget之中安装 system.drawing.common
-        // 5. 添加对C:\Windows\Microsoft.NET\Framework64\v4.0.30319\WPF\WindowsFormsIntegration.dll 的引用
-        // 6. 上面两个是为了在XAML之中使用WindowsFormsHost
-        // 7. 输出文件保存在可执行文件所在目录的_SampleAforge目录下
+        // 5. 添加对WindowsFormsIntegration 程序集的引用，为了在XAML之中使用WindowsFormsHost
+        // 6. 输出文件保存在可执行文件所在目录的_SampleAforge目录下
         // 参考文档
         // AForge官网 https://github.com/andrewkirillov/AForge.NET  如今是Accord的一部分 使用ffmpeg的部分为GPL协议，其他代码为LGPL协议
         // Accord官网 http://accord-framework.net/index.html  部分为GPL协议，其他代码为LGPL协议

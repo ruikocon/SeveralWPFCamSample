@@ -3,6 +3,12 @@
 
 
 
+
+
+
+
+---
+
 ### SampleOpenCVSharp
 使用OpenCVSharp库实现控制webcam，设置分辨率，录像截图的示例
 
@@ -31,6 +37,8 @@
 
 
 
+
+---
 
 ### SampleMediaCapture
 
@@ -66,6 +74,8 @@
 
 
 
+----
+
 ### SampleAForge
 
 使用AForge库实现控制webcam，选择分辨率，录像截图的示例。
@@ -82,13 +92,10 @@
 
 ​	***注意不要去找AForge.video.ffmpeg，已经很老了，很多坑，再说也找不到***
 
-4. 添加system.drawing的引用，如果是.Net6，需要在nuget之中安装 system.drawing.common 
+4. 添加system.drawing程序集的引用，如果是.Net6，可能需要在nuget之中安装 system.drawing.common 
 
-5. 添加对C:\Windows\Microsoft.NET\Framework64\v4.0.30319\WPF\WindowsFormsIntegration.dll 的引用
-
-6. 上面两个引用，是为了在XAML之中使用WindowsFormsHost
-
-7. 输出文件保存在可执行文件所在目录的_SampleAforge目录下
+5. 添加对WindowsFormsIntegration程序集 的引用，为了在XAML之中使用WindowsFormsHost，并使用某些类
+6. 输出文件保存在可执行文件所在目录的_SampleAforge目录下
 
 
 
@@ -104,6 +111,10 @@
 
 
 
+
+
+----
+
 ### SampleCaptura
 
 使用DirectShowLib库和FFmpeg实现控制webcam录像截图的示例。
@@ -112,7 +123,7 @@
 
 ##### 项目说明：
 
-1. 适用于.Net Framework和.Net，可以获取从摄像录像截图，但不能选择分辨率，获取摄像头图像和录像截图代码都抄自Captura，获取摄像头部分使用DirectShowLib，编码输出视频部分使用ffmpeg
+1. 项目为.Net Framework，代码适用于.Net Framework和.Net，可以获取从摄像头录像截图，但不能选择分辨率，获取摄像头图像和录像截图代码都抄自Captura，获取摄像头部分使用DirectShowLib，编码输出视频部分使用ffmpeg
 2. ffmpeg需从官网下载GPL版的，将可执行文件和dll解压到指定目录，比如D:\ffmpeg，然后将FFmpegService.cs中的两处folderPath改为该目录
 3. 从nuget之中添加DirectShowLib，添加对程序集System.Drawing的引用
 4. 输出文件保存在可执行文件所在目录的_SampleCaptura目录下
@@ -134,6 +145,39 @@
 
 
 
+
+----
+
+### SampleCameraNet
+
+使用DirectShowLib库、Camera_Net控件和FFmpeg实现控制摄像头，录像截图，切换分辨率的示例。
+
+**有BUG，输出某些格式的视频时会出现类似电视墙的问题，正在修改。**
+
+
+
+##### 项目说明
+
+1. 项目为.Net Framework，代码适用于.Net和.Net Framework。可以从摄像头录像截屏，切换分辨率。切换分辨率和获取摄像头内容的代码来自Camera_Net，使用DirectShowLib库来实现，录像和截图的代码来自Captura，使用ffmpeg编码输出mp4
+2. ffmpeg需从官网下载GPL版的，将可执行文件和dll解压到指定目录，比如D:\ffmpeg，然后将FFmpegService.cs中的两处folderPath改为该目录
+
+3. 从nuget之中添加DirectShowLib，添加对Camera_Net.dll的引用
+4. 添加System.Drawing程序集 用于输出图片
+5. Camera_Net为一套显示摄像头图像的winform控件UserControl，所以需要添加System.Windows.Forms程序集和WindowsFormsIntegration 程序集，以在wpf之中通过WindowsFormsHost  使用winform控件 
+6. 输出文件保存在可执行文件所在目录的_SampleCameraNet目录下
+7. 如果显示XAML 设计器已意外退出。(退出代码: e0434352)，并且XAML设计界面没有内容，说明上述库没有引入完全，Camera_Net需要DirectShowLib和System.Windows.Forms，引入完全之后可以正常显示
+
+
+
+##### 参考文档
+
+> Camera_Net官网   https://github.com/free5lot/Camera_Net     LGPL 3.0 协议
+>
+> DirectShowLib官网： https://directshownet.sourceforge.net/   LGPL 2.1协议
+>
+> Captura官网   https://github.com/MathewSachin/Captura    MIT协议
+>
+> FFmpeg官网  https://ffmpeg.org/    GPL协议
 
 
 

@@ -4,7 +4,7 @@ using System.IO.Pipes;
 using System.Threading;
 using System.Threading.Tasks;
 
-namespace SampleCaptura
+namespace SampleCameraNet
 {
     /// <summary>
     /// Encode Video using FFmpeg.exe
@@ -85,7 +85,7 @@ namespace SampleCaptura
             _ffmpegIn = new NamedPipeServerStream(videoPipeName, PipeDirection.Out, 1, PipeTransmissionMode.Byte, PipeOptions.Asynchronous, 0, _videoBuffer.Length);
             //
             //方便起见，简化处理
-            _ffmpegProcess = FFmpegService.StartFFmpeg("-thread_queue_size 512 -framerate 25 -f rawvideo -pix_fmt rgb32 -video_size 1280x720 -i \\\\.\\pipe\\" + videoPipeName + " -r 10 -vcodec libx264 -crf 15 -pix_fmt yuv420p -preset fast \".\\_SampleCaptura\\" + FileName + ".mp4\"", ".\\_SampleCaptura\\" + FileName + ".mp4");
+            _ffmpegProcess = FFmpegService.StartFFmpeg("-thread_queue_size 512 -framerate 25 -f rawvideo -pix_fmt rgb32 -video_size 1280x720 -i \\\\.\\pipe\\" + videoPipeName + " -r 10 -vcodec libx264 -crf 15 -pix_fmt yuv420p -preset fast \".\\_SampleCameraNet\\" + FileName + ".mp4\"", ".\\_SampleCameraNet\\" + FileName + ".mp4");
         }
 
         /// <summary>
